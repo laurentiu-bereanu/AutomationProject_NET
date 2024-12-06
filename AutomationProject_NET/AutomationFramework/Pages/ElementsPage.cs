@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 
-namespace AutomationProject_NET.Pages
+namespace AutomationProject_NET.AutomationFramework.Pages
 {
     public class ElementsPage
     {

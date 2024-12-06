@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 
-namespace AutomationProject_NET.Pages
+namespace AutomationProject_NET.AutomationFramework.Pages
 {
     public class TextBoxPage
     {
@@ -19,11 +19,11 @@ namespace AutomationProject_NET.Pages
         private IWebElement FullNameField => _driver.FindElement(By.Id("userName"));
 
         private IWebElement EmailField => _driver.FindElement(By.Id("userEmail"));
-        
+
         private IWebElement CurrentAddressField => _driver.FindElement(By.Id("currentAddress"));
-        
+
         private IWebElement PermanentAddressField => _driver.FindElement(By.Id("permanentAddress"));
-        
+
         private IWebElement SumbitButton => _driver.FindElement(By.Id("submit"));
 
 
@@ -52,5 +52,5 @@ namespace AutomationProject_NET.Pages
             SumbitButton.Click();
         }
 
-}
+    }
 }

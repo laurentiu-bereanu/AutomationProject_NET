@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium;
 
-namespace AutomationProject_NET.Utils
+namespace AutomationProject_NET.AutomationFramework.Utils
 {
     public static class Utility
     {

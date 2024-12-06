@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace AutomationProject_NET
+namespace AutomationProject_NET.AutomationFramework
 {
     public class BaseTest
     {
@@ -25,7 +25,7 @@ namespace AutomationProject_NET
         [TearDown]
         public void TearDown()
         {
-            //Driver?.Quit();
+            Driver?.Quit();
         }
     }
 }

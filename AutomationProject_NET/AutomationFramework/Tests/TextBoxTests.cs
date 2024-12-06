@@ -1,9 +1,10 @@
+using AutomationProject_NET.AutomationFramework;
 using AutomationProject_NET.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 
-namespace AutomationProject_NET.Tests
+namespace AutomationProject_NET.AutomationFramework.Tests
 {
     public class TextBoxTests : BaseTest
     {

@@ -5,7 +5,7 @@ namespace AutomationProject_NET.AutomationFramework
 {
     public class BaseTest
     {
-        protected IWebDriver? Driver;
+        protected IWebDriver Driver = null!;
 
         [SetUp]
         public void Setup()

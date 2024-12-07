@@ -1,30 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutomationProject_NET.AutomationFramework.Utils;
 using OpenQA.Selenium;
 
 namespace AutomationProject_NET.AutomationFramework.Pages
 {
-    public class TextBoxPage
+    public class TextBoxPage(IWebDriver driver)
     {
-        private readonly IWebDriver _driver;
+        private IWebElement FullNameField => driver.FindElement(By.Id("userName"));
 
-        public TextBoxPage(IWebDriver driver)
-        {
-            _driver = driver;
-        }
+        private IWebElement EmailField => driver.FindElement(By.Id("userEmail"));
 
-        private IWebElement FullNameField => _driver.FindElement(By.Id("userName"));
+        private IWebElement CurrentAddressField => driver.FindElement(By.Id("currentAddress"));
 
-        private IWebElement EmailField => _driver.FindElement(By.Id("userEmail"));
+        private IWebElement PermanentAddressField => driver.FindElement(By.Id("permanentAddress"));
 
-        private IWebElement CurrentAddressField => _driver.FindElement(By.Id("currentAddress"));
-
-        private IWebElement PermanentAddressField => _driver.FindElement(By.Id("permanentAddress"));
-
-        private IWebElement SumbitButton => _driver.FindElement(By.Id("submit"));
+        private IWebElement SumbitButton => driver.FindElement(By.Id("submit"));
 
 
         public void EnterFullName(string name)
@@ -49,6 +38,7 @@ namespace AutomationProject_NET.AutomationFramework.Pages
 
         public void ClickOnSubmitButton()
         {
+            Utility.ScrollPageToElement(driver, SumbitButton);
             SumbitButton.Click();
         }
 

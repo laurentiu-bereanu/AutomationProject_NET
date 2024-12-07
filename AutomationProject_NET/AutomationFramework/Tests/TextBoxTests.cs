@@ -1,8 +1,4 @@
-using AutomationProject_NET.AutomationFramework;
-using AutomationProject_NET.Pages;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
+using AutomationProject_NET.AutomationFramework.Pages;
 
 namespace AutomationProject_NET.AutomationFramework.Tests
 {

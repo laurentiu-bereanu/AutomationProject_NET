@@ -1,19 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium.Interactions;
+﻿using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium;
 
 namespace AutomationProject_NET.AutomationFramework.Utils
 {
     public static class Utility
     {
-        public static void MoveToElement(IWebDriver driver, IWebElement element)
+        public static void MoveCursorToElement(IWebDriver driver, IWebElement element)
         {
             Actions actions = new(driver);
             actions.MoveToElement(element).Perform();
         }
+
+        public static void ScrollPageToElement(IWebDriver driver, IWebElement element)
+        {
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", element);
+        }
+
     }
 }

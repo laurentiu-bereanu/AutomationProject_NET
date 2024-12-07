@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace AutomationProject_NET.AutomationFramework
@@ -25,7 +20,7 @@ namespace AutomationProject_NET.AutomationFramework
         [TearDown]
         public void TearDown()
         {
-            Driver?.Quit();
+            Driver?.Dispose();
         }
     }
 }

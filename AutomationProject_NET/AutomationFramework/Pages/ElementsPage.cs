@@ -1,22 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace AutomationProject_NET.AutomationFramework.Pages
 {
-    public class ElementsPage
+    public class ElementsPage(IWebDriver driver)
     {
-        private readonly IWebDriver _driver;
-
-        public ElementsPage(IWebDriver driver)
-        {
-            _driver = driver;
-        }
-
-        private IWebElement TextBoxButton => _driver.FindElement(By.XPath("//*[text()='Text Box']"));
+        private IWebElement TextBoxButton => driver.FindElement(By.XPath("//*[text()='Text Box']"));
 
         public void NavigateToTextBox()
         {

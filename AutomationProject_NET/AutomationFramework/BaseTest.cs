@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using AutomationProject_NET.AutomationFramework.Factory;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace AutomationProject_NET.AutomationFramework
@@ -12,7 +13,8 @@ namespace AutomationProject_NET.AutomationFramework
         {
             var baseURL = "https://demoqa.com/";
 
-            Driver = new ChromeDriver();
+            Driver = new DriverFactory().CreateInstance(BrowserList.CHROME.ToString());
+
             Driver.Manage().Window.Maximize();
             Driver.Navigate().GoToUrl(baseURL);
         }

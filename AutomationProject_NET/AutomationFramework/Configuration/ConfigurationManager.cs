@@ -18,9 +18,9 @@ namespace AutomationProject_NET.AutomationFramework.Configuration
 
             var services = new ServiceCollection();
 
-            var testSettings = configuration.GetSection(TEST_SETTINGS_SECTION_NAME).Get<TestSettings>() 
+            var testSettings = configuration.GetSection(TEST_SETTINGS_SECTION_NAME).Get<TestSettings>()
                 ?? throw new Exception($"{TEST_SETTINGS_SECTION_NAME} section not found in the configuration file.");
-            
+
             services.AddSingleton(testSettings);
 
             return services.BuildServiceProvider();

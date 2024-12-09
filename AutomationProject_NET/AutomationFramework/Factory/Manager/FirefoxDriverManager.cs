@@ -13,5 +13,5 @@ namespace AutomationProject_NET.AutomationFramework.Factory.Manager
             return new FirefoxDriver();
         }
     }
-    
+
 }

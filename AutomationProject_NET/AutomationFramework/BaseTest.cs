@@ -1,4 +1,6 @@
-﻿using AutomationProject_NET.AutomationFramework.Factory;
+﻿using AutomationProject_NET.AutomationFramework.Configuration;
+using AutomationProject_NET.AutomationFramework.Factory;
+using Microsoft.Extensions.DependencyInjection;
 using OpenQA.Selenium;
 
 namespace AutomationProject_NET.AutomationFramework
@@ -7,12 +9,17 @@ namespace AutomationProject_NET.AutomationFramework
     {
         protected IWebDriver Driver = null!;
 
+        protected TestSettings Settings = null!;
+
         [SetUp]
         public void Setup()
         {
-            var baseURL = "https://demoqa.com/";
+            var serviceProvider = ConfigurationManager.Initialize();
+            Settings = serviceProvider.GetRequiredService<TestSettings>();
 
-            Driver = new DriverFactory().CreateInstance(BrowserList.CHROME.ToString());
+            var baseURL = Settings.BaseUrl;
+
+            Driver = DriverFactory.CreateInstance(Settings.Browser);
 
             Driver.Manage().Window.Maximize();
             Driver.Navigate().GoToUrl(baseURL);

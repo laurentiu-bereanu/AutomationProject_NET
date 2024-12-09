@@ -5,7 +5,7 @@ namespace AutomationProject_NET.AutomationFramework.Factory
 {
     public class DriverFactory
     {
-        public IWebDriver CreateInstance(string browser)
+        public static IWebDriver CreateInstance(string browser)
         {
             IWebDriver driver;
             BrowserList browserType = (BrowserList)Enum.Parse(typeof(BrowserList), browser, true);

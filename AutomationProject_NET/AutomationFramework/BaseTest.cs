@@ -1,6 +1,5 @@
 ﻿using AutomationProject_NET.AutomationFramework.Factory;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 
 namespace AutomationProject_NET.AutomationFramework
 {

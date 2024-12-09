@@ -1,46 +1,58 @@
 ﻿using AutomationProject_NET.AutomationFramework.Utils;
 using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
 
 namespace AutomationProject_NET.AutomationFramework.Pages
 {
-    public class TextBoxPage(IWebDriver driver)
+    public class TextBoxPage
     {
-        private IWebElement FullNameField => driver.FindElement(By.Id("userName"));
+        private readonly IWebDriver _driver;
 
-        private IWebElement EmailField => driver.FindElement(By.Id("userEmail"));
+        [FindsBy(How = How.Id, Using = "userName")]
+        private readonly IWebElement _fullNameField = null!;
 
-        private IWebElement CurrentAddressField => driver.FindElement(By.Id("currentAddress"));
+        [FindsBy(How = How.Id, Using = "userEmail")]
+        private readonly IWebElement _emailField = null!;
 
-        private IWebElement PermanentAddressField => driver.FindElement(By.Id("permanentAddress"));
+        [FindsBy(How = How.Id, Using = "currentAddress")]
+        private readonly IWebElement _currentAddressField = null!;
 
-        private IWebElement SumbitButton => driver.FindElement(By.Id("submit"));
+        [FindsBy(How = How.Id, Using = "permanentAddress")]
+        private readonly IWebElement _permanentAddressField = null!;
 
+        [FindsBy(How = How.Id, Using = "submit")]
+        private readonly IWebElement _submitButton = null!;
+
+        public TextBoxPage(IWebDriver driver)
+        {
+            _driver = driver;
+            PageFactory.InitElements(driver, this);
+        }
 
         public void EnterFullName(string name)
         {
-            FullNameField.SendKeys(name);
+            _fullNameField.SendKeys(name);
         }
 
         public void EnterEmail(string email)
         {
-            EmailField.SendKeys(email);
+            _emailField.SendKeys(email);
         }
 
         public void EnterCurrentAddress(string currentAddress)
         {
-            CurrentAddressField.SendKeys(currentAddress);
+            _currentAddressField.SendKeys(currentAddress);
         }
 
         public void EnterPermanentAddress(string permanentAddress)
         {
-            PermanentAddressField.SendKeys(permanentAddress);
+            _permanentAddressField.SendKeys(permanentAddress);
         }
 
         public void ClickOnSubmitButton()
         {
-            Utility.ScrollPageToElement(driver, SumbitButton);
-            SumbitButton.Click();
+            Utility.ScrollPageToElement(_driver, _submitButton);
+            _submitButton.Click();
         }
-
     }
 }

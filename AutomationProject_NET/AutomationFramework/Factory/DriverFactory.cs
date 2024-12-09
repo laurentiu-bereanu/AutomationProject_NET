@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using AutomationProject_NET.AutomationFramework.Factory.Manager;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 
 namespace AutomationProject_NET.AutomationFramework.Factory
 {

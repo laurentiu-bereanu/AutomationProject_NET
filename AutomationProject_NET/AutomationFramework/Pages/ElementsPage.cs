@@ -1,14 +1,21 @@
 ﻿using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
 
 namespace AutomationProject_NET.AutomationFramework.Pages
 {
-    public class ElementsPage(IWebDriver driver)
+    public class ElementsPage
     {
-        private IWebElement TextBoxButton => driver.FindElement(By.XPath("//*[text()='Text Box']"));
+        [FindsBy(How = How.XPath, Using = "//*[text()='Text Box']")]
+        private readonly IWebElement _textBoxButton = null!;
+
+        public ElementsPage(IWebDriver driver)
+        {
+            PageFactory.InitElements(driver, this);
+        }
 
         public void NavigateToTextBox()
         {
-            TextBoxButton.Click();
+            _textBoxButton.Click();
         }
     }
 }

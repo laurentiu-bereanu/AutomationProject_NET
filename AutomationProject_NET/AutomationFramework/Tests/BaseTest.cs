@@ -3,7 +3,7 @@ using AutomationProject_NET.AutomationFramework.Factory;
 using Microsoft.Extensions.DependencyInjection;
 using OpenQA.Selenium;
 
-namespace AutomationProject_NET.AutomationFramework
+namespace AutomationProject_NET.AutomationFramework.Tests
 {
     public class BaseTest
     {
@@ -28,7 +28,7 @@ namespace AutomationProject_NET.AutomationFramework
         [TearDown]
         public void TearDown()
         {
-            Driver?.Dispose();
+            //Driver?.Dispose();
         }
     }
 }

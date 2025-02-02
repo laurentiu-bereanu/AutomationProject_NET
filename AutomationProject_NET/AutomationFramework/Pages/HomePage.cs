@@ -11,12 +11,45 @@ namespace AutomationProject_NET.AutomationFramework.Pages
         [FindsBy(How = How.XPath, Using = "//h5[text()='Forms']")]
         private readonly IWebElement _formsButton = null!;
 
+        [FindsBy(How = How.XPath, Using = "//h5[text()='Alerts, Frame & Windows']")]
+        private readonly IWebElement _alertsFrameWindowsButton = null!;
+
         [FindsBy(How = How.XPath, Using = "//h5[text()='Widgets']")]
         private readonly IWebElement _widgetsButton = null!;
+
+        [FindsBy(How = How.XPath, Using = "//h5[text()='Interactions']")]
+        private readonly IWebElement _interactionsButton = null!;
 
         public HomePage(IWebDriver driver)
         {
             PageFactory.InitElements(driver, this);
+        }
+
+        public void ClickOnElement(String name)
+        {
+            switch (name)
+            {
+                case "Elements":
+                    ClickOnElementsSection();
+                    break;
+                case "Forms":
+                    ClickOnFormsSection();
+                    break;
+                case "Alerts":
+                case "Frame":
+                case "Windows":
+                case "Alerts, Frame & Windows":
+                    ClickOnAlertsFrameWindowsSection();
+                    break;
+                case "Widgets":
+                    ClickOnWidgetsSection();
+                    break;
+                case "Interactions":
+                    ClickOnInteractionsSection();
+                    break;
+                default:
+                    throw new NoSuchElementException(name);
+            }
         }
 
         public void ClickOnElementsSection()
@@ -29,9 +62,19 @@ namespace AutomationProject_NET.AutomationFramework.Pages
             _formsButton.Click();
         }
 
+        public void ClickOnAlertsFrameWindowsSection()
+        {
+            _alertsFrameWindowsButton.Click();
+        }
+
         public void ClickOnWidgetsSection()
         {
             _widgetsButton.Click();
+        }
+
+        public void ClickOnInteractionsSection()
+        {
+            _interactionsButton.Click();
         }
     }
 }

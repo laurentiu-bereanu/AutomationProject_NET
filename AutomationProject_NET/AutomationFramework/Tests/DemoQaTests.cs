@@ -1,6 +1,7 @@
 using AutomationProject_NET.AutomationFramework.Pages;
 using AutomationProject_NET.AutomationFramework.Pages.Elements;
 using AutomationProject_NET.AutomationFramework.Pages.Forms;
+using AutomationProject_NET.AutomationFramework.Pages.Interactions;
 
 namespace AutomationProject_NET.AutomationFramework.Tests
 {
@@ -13,6 +14,8 @@ namespace AutomationProject_NET.AutomationFramework.Tests
         private WebTablesPage webTablesPage = null!;
         private FormsPage formsPage = null!;
         private PracticeFormPage practiceFormsPage = null!;
+        private InteractionsPage interactionsPage = null!;
+        private SelectablePage selectablePage = null!;
 
         [SetUp]
         public void SetUpPages()
@@ -23,6 +26,8 @@ namespace AutomationProject_NET.AutomationFramework.Tests
             webTablesPage = new WebTablesPage(Driver);
             formsPage = new FormsPage(Driver);
             practiceFormsPage = new PracticeFormPage(Driver);
+            interactionsPage = new InteractionsPage(Driver);
+            selectablePage = new SelectablePage(Driver);
         }
 
         [Test]
@@ -102,6 +107,20 @@ namespace AutomationProject_NET.AutomationFramework.Tests
 
             practiceFormsPage.SelectGender("male");
             practiceFormsPage.EnterSubject("English");
+        }
+
+        [Test]
+        public void SelectableTest()
+        {
+            homePage.ClickOnInteractionsSection();
+            Assert.That(interactionsPage.IsAt(), Is.True);
+
+            interactionsPage.NavigateToSelectable();
+            Assert.That(selectablePage.IsAt(), Is.True);
+
+            selectablePage.ClickOnGridView();
+
+            selectablePage.ClickOnlyOnCellsWithSpecificType("odd");
         }
     }
 }

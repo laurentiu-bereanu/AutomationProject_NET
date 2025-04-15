@@ -1,10 +1,13 @@
-﻿using OpenQA.Selenium;
+﻿using AutomationProject_NET.AutomationFramework.Utils;
+using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
 namespace AutomationProject_NET.AutomationFramework.Pages
 {
     public class HomePage
     {
+        private readonly ElementMethods _elementMethods;
+
         [FindsBy(How = How.XPath, Using = "//h5[text()='Elements']")]
         private readonly IWebElement _elementsButton = null!;
 
@@ -23,6 +26,7 @@ namespace AutomationProject_NET.AutomationFramework.Pages
         public HomePage(IWebDriver driver)
         {
             PageFactory.InitElements(driver, this);
+            _elementMethods = new ElementMethods(driver);
         }
 
         public void ClickOnElement(String name)

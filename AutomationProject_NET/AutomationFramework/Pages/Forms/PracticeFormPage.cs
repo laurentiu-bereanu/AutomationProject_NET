@@ -1,10 +1,13 @@
-﻿using OpenQA.Selenium;
+﻿using AutomationProject_NET.AutomationFramework.Utils;
+using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
 namespace AutomationProject_NET.AutomationFramework.Pages.Forms
 {
     internal class PracticeFormPage : BasePage
     {
+        private readonly ElementMethods _elementMethods;
+
         protected override string PageUrl => "/automation-practice-form";
 
         [FindsBy(How = How.Id, Using = "firstName")]
@@ -28,6 +31,7 @@ namespace AutomationProject_NET.AutomationFramework.Pages.Forms
         public PracticeFormPage(IWebDriver driver) : base(driver)
         {
             PageFactory.InitElements(driver, this);
+            _elementMethods = new ElementMethods(driver);
         }
 
         public void EnterFirstName(string name)

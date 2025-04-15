@@ -1,10 +1,13 @@
-﻿using OpenQA.Selenium;
+﻿using AutomationProject_NET.AutomationFramework.Utils;
+using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
 namespace AutomationProject_NET.AutomationFramework.Pages.Elements
 {
     public class ElementsPage : BasePage
     {
+        private readonly ElementMethods _elementMethods;
+
         protected override string PageUrl => "/elements";
 
         [FindsBy(How = How.XPath, Using = "//*[text()='Text Box']")]
@@ -16,16 +19,17 @@ namespace AutomationProject_NET.AutomationFramework.Pages.Elements
         public ElementsPage(IWebDriver driver) : base(driver)
         {
             PageFactory.InitElements(driver, this);
+            _elementMethods = new ElementMethods(driver);
         }
 
         public void NavigateToTextBox()
         {
-            _textBoxButton.Click();
+            _elementMethods.ClickElement(_textBoxButton);
         }
 
         public void NavigateToWebTables()
         {
-            _webTablesButton.Click();
+            _elementMethods.ClickElement(_webTablesButton);
         }
 
     }

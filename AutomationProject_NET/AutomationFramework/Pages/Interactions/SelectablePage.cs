@@ -6,6 +6,7 @@ namespace AutomationProject_NET.AutomationFramework.Pages.Interactions
 {
     internal class SelectablePage : BasePage
     {
+        private readonly ElementMethods _elementMethods;
         protected override string PageUrl => "/selectable";
 
         [FindsBy(How = How.Id, Using = "demo-tab-list")]
@@ -17,16 +18,17 @@ namespace AutomationProject_NET.AutomationFramework.Pages.Interactions
         public SelectablePage(IWebDriver driver) : base(driver)
         {
             PageFactory.InitElements(driver, this);
+            _elementMethods = new ElementMethods(driver);
         }
 
         public void ClickOnGridView()
         {
-            _gridViewButton.Click();
+            _elementMethods.ClickElement(_gridViewButton);
         }
 
         public void ClickOnListView()
         {
-            _listViewButton.Click();
+            _elementMethods.ClickElement(_listViewButton);
         }
 
         public void ClickOnlyOnCellsWithSpecificType(String typeOfNumbers)
@@ -44,10 +46,10 @@ namespace AutomationProject_NET.AutomationFramework.Pages.Interactions
             {
                 var element = allRowsElements[i];
                 if (!element.Displayed)
-                    Utility.ScrollPageToElement(_driver, element);
+                    _elementMethods.ScrollPageToElement(element);
 
                 Console.WriteLine($"Clicking on cell with number {i + 1}");
-                element.Click();
+                _elementMethods.ClickElement(element);
             }
         }
 

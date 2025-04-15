@@ -6,6 +6,8 @@ namespace AutomationProject_NET.AutomationFramework.Pages.Elements
 {
     public class TextBoxPage : BasePage
     {
+        private readonly ElementMethods _elementMethods;
+
         protected override string PageUrl => "/text-box";
 
         [FindsBy(How = How.Id, Using = "userName")]
@@ -38,6 +40,7 @@ namespace AutomationProject_NET.AutomationFramework.Pages.Elements
         public TextBoxPage(IWebDriver driver) : base(driver)
         {
             PageFactory.InitElements(driver, this);
+            _elementMethods = new ElementMethods(driver);
         }
 
         public void EnterFullName(string name)
@@ -62,8 +65,7 @@ namespace AutomationProject_NET.AutomationFramework.Pages.Elements
 
         public void ClickOnSubmitButton()
         {
-            Utility.ScrollPageToElement(_driver, _submitButton);
-            _submitButton.Click();
+            _elementMethods.ClickElement(_submitButton);
         }
 
         public void PopulateFormWithData(string name, string email, string currentAddress, string permanentAddress)

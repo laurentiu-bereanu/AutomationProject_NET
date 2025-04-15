@@ -28,7 +28,8 @@ namespace AutomationProject_NET.AutomationFramework.Tests
         [TearDown]
         public void TearDown()
         {
-            //Driver?.Dispose();
+            Driver?.Quit();
+            Driver?.Dispose();
         }
     }
 }

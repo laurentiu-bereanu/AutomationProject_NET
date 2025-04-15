@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using AutomationProject_NET.AutomationFramework.Utils;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 
@@ -6,6 +7,8 @@ namespace AutomationProject_NET.AutomationFramework.Pages.Elements
 {
     public class WebTablesPage : BasePage
     {
+        private readonly ElementMethods _elementMethods;
+
         protected override string PageUrl => "/webtables";
 
         [FindsBy(How = How.Id, Using = "addNewRecordButton")]
@@ -43,6 +46,7 @@ namespace AutomationProject_NET.AutomationFramework.Pages.Elements
         public WebTablesPage(IWebDriver driver) : base(driver)
         {
             PageFactory.InitElements(driver, this);
+            _elementMethods = new ElementMethods(driver);
         }
 
         public void ClickOnAddButton()

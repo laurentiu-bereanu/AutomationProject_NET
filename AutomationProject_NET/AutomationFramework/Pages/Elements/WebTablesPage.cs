@@ -51,7 +51,7 @@ namespace AutomationProject_NET.AutomationFramework.Pages.Elements
 
         public void ClickOnAddButton()
         {
-            _addButton.Click();
+            _elementMethods.ClickElement(_addButton);
         }
 
         public void EnterFirstName(string firstName)
@@ -86,7 +86,7 @@ namespace AutomationProject_NET.AutomationFramework.Pages.Elements
 
         public void ClickOnPopupSubmitButton()
         {
-            _popupSubmitButton.Click();
+            _elementMethods.ClickElement(_popupSubmitButton);
         }
 
         public void PopulateRegistrationForm(string firstName, string lastName, string email, string age, string salary, string departament)

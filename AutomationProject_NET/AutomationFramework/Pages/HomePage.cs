@@ -58,27 +58,27 @@ namespace AutomationProject_NET.AutomationFramework.Pages
 
         public void ClickOnElementsSection()
         {
-            _elementsButton.Click();
+            _elementMethods.ClickElement(_elementsButton);
         }
 
         public void ClickOnFormsSection()
         {
-            _formsButton.Click();
+            _elementMethods.ClickElement(_formsButton); 
         }
 
         public void ClickOnAlertsFrameWindowsSection()
         {
-            _alertsFrameWindowsButton.Click();
+            _elementMethods.ClickElement(_alertsFrameWindowsButton);
         }
 
         public void ClickOnWidgetsSection()
         {
-            _widgetsButton.Click();
+            _elementMethods.ClickElement(_widgetsButton);
         }
 
         public void ClickOnInteractionsSection()
         {
-            _interactionsButton.Click();
+            _elementMethods.ClickElement(_interactionsButton);
         }
     }
 }

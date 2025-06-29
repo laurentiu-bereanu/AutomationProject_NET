@@ -1,5 +1,6 @@
 ﻿using AutomationProject_NET.AutomationFramework.Configuration;
 using AutomationProject_NET.AutomationFramework.Factory;
+using log4net;
 using Microsoft.Extensions.DependencyInjection;
 using OpenQA.Selenium;
 
@@ -10,6 +11,15 @@ namespace AutomationProject_NET.AutomationFramework.Tests
         protected IWebDriver Driver = null!;
 
         protected TestSettings Settings = null!;
+
+        protected static readonly ILog log = LogManager.GetLogger(typeof(BaseTest));
+
+        [OneTimeSetUp]
+        public void GlobalSetup()
+        {
+            LogInitializer.Initialize();
+        }
+
 
         [SetUp]
         public void Setup()
@@ -28,6 +38,7 @@ namespace AutomationProject_NET.AutomationFramework.Tests
         [TearDown]
         public void TearDown()
         {
+            Thread.Sleep(5000);
             Driver?.Quit();
             Driver?.Dispose();
         }

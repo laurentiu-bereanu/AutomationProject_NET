@@ -1,0 +1,15 @@
+﻿<dataSets>
+	<dataSet_1>
+		<firstName>Laurentiu</firstName>
+		<lastName>Bereanu</lastName>
+		<userEmail>test@test.com</userEmail>
+		<gender>Male</gender>
+		<mobile>1234567890</mobile>
+		<dateOfBirthDaysDifference>500</dateOfBirthDaysDifference>
+		<subjects>Biology,English,Maths</subjects>
+		<hobbies>Music,Reading</hobbies>
+		<currentAddress>Strada Endavei</currentAddress>
+		<state>NCR</state>
+		<city>Delhi</city>
+	</dataSet_1>
+</dataSets>

@@ -1,10 +1,11 @@
+using AutomationProject_NET.AutomationFramework.Access;
+using AutomationProject_NET.AutomationFramework.Configuration;
 using AutomationProject_NET.AutomationFramework.Pages;
 using AutomationProject_NET.AutomationFramework.Pages.AlertsFrameWindows;
 using AutomationProject_NET.AutomationFramework.Pages.Elements;
 using AutomationProject_NET.AutomationFramework.Pages.Forms;
 using AutomationProject_NET.AutomationFramework.Pages.Interactions;
 using AutomationProject_NET.AutomationFramework.Utils;
-using OpenQA.Selenium.DevTools.V130.Network;
 
 namespace AutomationProject_NET.AutomationFramework.Tests
 {
@@ -22,6 +23,8 @@ namespace AutomationProject_NET.AutomationFramework.Tests
         private AlertsFrameWindowsPage alertsFrameWindowsPage = null!;
         private FramesPage framesPage = null!;
         private ContextMethods contextMethods = null!;
+        private CommonPage commonPage = null!;
+        private FramesCursPage framesCursPage = null!;
 
         [SetUp]
         public void SetUpPages()
@@ -37,6 +40,8 @@ namespace AutomationProject_NET.AutomationFramework.Tests
             alertsFrameWindowsPage = new AlertsFrameWindowsPage(Driver);
             framesPage = new FramesPage(Driver);
             contextMethods = new ContextMethods(Driver);
+            commonPage = new CommonPage(Driver);
+            framesCursPage = new FramesCursPage(Driver);
         }
 
         [Test]
@@ -70,12 +75,13 @@ namespace AutomationProject_NET.AutomationFramework.Tests
         [Test]
         public void ShouldAddRecordToWebTable()
         {
-            string firstName = "Maria";
-            string lastName = "Ioana";
-            string email = "maria.ioana@test.com";
-            string age = "50";
-            string salary = "5000";
-            string departament = "HR";
+            var webTableData = new WebTableData(1);
+            string firstName = webTableData.FirstName;
+            string lastName = webTableData.LastName;
+            string email = webTableData.UserEmail;
+            string age = webTableData.Age;
+            string salary = webTableData.Salary;
+            string departament = webTableData.Department;
 
             homePage.ClickOnElementsSection();
             Assert.That(elementsPage.IsAt(), Is.True);
@@ -119,6 +125,23 @@ namespace AutomationProject_NET.AutomationFramework.Tests
         }
 
         [Test]
+        public void PracticeFormTestWithTestData()
+        {
+            PracticeFormData practiceFormData = new PracticeFormData(1);
+
+            homePage.ClickOnFormsSection();
+            Assert.That(formsPage.IsAt(), Is.True);
+
+            formsPage.NavigateToPracticeForm();
+            Assert.That(practiceFormsPage.IsAt(), Is.True);
+
+            practiceFormsPage.PopulateStudentRegistrationForm(practiceFormData);
+
+            practiceFormsPage.SubmitForm();
+        }
+       
+
+        [Test]
         public void SelectableTest()
         {
             homePage.ClickOnInteractionsSection();
@@ -142,11 +165,21 @@ namespace AutomationProject_NET.AutomationFramework.Tests
             Assert.That(framesPage.IsAt(), Is.True);
 
             framesPage.SwitchToBigFrameContext();
-            Console.WriteLine(framesPage.GetBigFrameText());
+            LoggerHelper.Log.Info(framesPage.GetBigFrameText());
 
             contextMethods.SwitchToDefaultContext();
 
             framesPage.SwitchToSmallFrameContext();
+        }
+
+        [Test]
+        public void FrameTest()
+        {
+            homePage.ClickOnAlertsFrameWindowsSection();
+            commonPage.GoToDesiredSubMenu("Frames");
+            framesCursPage.GetTextFromBigFrame();
+
+            framesCursPage.GetTextFromSmallFrame();
         }
     }
 }

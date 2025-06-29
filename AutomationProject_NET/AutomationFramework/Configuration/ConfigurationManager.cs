@@ -12,7 +12,7 @@ namespace AutomationProject_NET.AutomationFramework.Configuration
             const string TEST_SETTINGS_SECTION_NAME = "TestSettings";
 
             var configuration = new ConfigurationBuilder()
-                .SetBasePath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AutomationFramework", "Configuration"))
+                .SetBasePath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AutomationFramework", "Configuration", "Resources"))
                 .AddJsonFile(SETTINGS_FILE_NAME, optional: false, reloadOnChange: true)
                 .Build();
 

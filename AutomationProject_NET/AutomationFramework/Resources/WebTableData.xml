@@ -1,0 +1,10 @@
+﻿<dataSets>
+	<dataSet_1>
+		<firstName>Laurentiu</firstName>
+		<lastName>Bereanu</lastName>
+		<userEmail>test@test.com</userEmail>
+		<age>29</age>
+		<salary>20000</salary>
+		<department>HR</department>
+	</dataSet_1>
+</dataSets>

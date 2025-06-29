@@ -1,4 +1,6 @@
-﻿using AutomationProject_NET.AutomationFramework.Utils;
+﻿using AutomationProject_NET.AutomationFramework.Configuration;
+using AutomationProject_NET.AutomationFramework.Utils;
+using log4net.Repository.Hierarchy;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
@@ -7,6 +9,7 @@ namespace AutomationProject_NET.AutomationFramework.Pages.Interactions
     internal class SelectablePage : BasePage
     {
         private readonly ElementMethods _elementMethods;
+
         protected override string PageUrl => "/selectable";
 
         [FindsBy(How = How.Id, Using = "demo-tab-list")]
@@ -48,7 +51,7 @@ namespace AutomationProject_NET.AutomationFramework.Pages.Interactions
                 if (!element.Displayed)
                     _elementMethods.ScrollPageToElement(element);
 
-                Console.WriteLine($"Clicking on cell with number {i + 1}");
+                LoggerHelper.Log.Info($"Clicking on cell with number {i + 1}");
                 _elementMethods.ClickElement(element);
             }
         }
